@@ -25,47 +25,24 @@ async function myFetch(url, type = 'GET', data = null) {
 
 }
 
+/**
+ * @param {{tag: string, id: any, classes: string, estilos: string, conteudo: string, value: any, src: string, params: array, download: boolean}} object
+ * @return {null|*}
+ * Função responsável por criar e retornar um elemento HTML.
+ */
+function create_element({ tag, id, classes, estilos, conteudo, value, src, params, download = false }) {
+    if (!tag) return null;
 
-async function getData(element) {
-    const cep = element.value.replace(/\D/g, '');
-    if (cep.length !== 8) return;
+    const element = document.createElement(tag);
 
-    let data = await myFetch(`https://viacep.com.br/ws/${cep}/json/`);
+    const attributes = { id, class: classes, style: estilos, value, src, download: download ? "" : undefined };
 
-    if (data && !data.erro) {
-        const { logradouro, complemento, bairro, localidade } = data;
+    Object.entries(attributes).forEach(([key, val]) => val !== undefined ? element.setAttribute(key, val) : '');
 
-        document.querySelector('.cep_').innerHTML = cep;
-        document.querySelector('.bairro').innerHTML = bairro;
-        document.querySelector('.localidade').innerHTML = localidade;
-        document.querySelector('.logradouro').innerHTML = logradouro;
-        document.querySelector('.complemento').innerHTML = complemento;
+    if (conteudo) element.innerHTML = conteudo;
+    params && params.forEach(({ key, value }) => element.setAttribute(key, value));
 
-        initMap(cep);
-
-        toastr.success('CEP Carregado com sucesso!', 'Sucesso!');
-    } else {
-        toastr.warning('CEP não encontrado ou erro na busca.', 'Erro!');
-    }
+    return element;
 }
 
-function initMap(cep) {
-    const map = new google.maps.Map(document.getElementById("map"), { zoom: 15, center: { lat: -23.563987, lng: -46.654321 } });
 
-    if (cep) {
-        const geocoder = new google.maps.Geocoder();
-        geocodeAddress(cep, geocoder, map);
-    }
-}
-
-function geocodeAddress(cep, geocoder, resultMap) {
-    geocoder.geocode({ 'address': cep }, function (results, status) {
-
-        if (status === 'OK') {
-            resultMap.setCenter(results[0].geometry.location);
-            new google.maps.Marker({ map: resultMap, position: results[0].geometry.location });
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
-    });
-}
