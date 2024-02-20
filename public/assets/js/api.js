@@ -51,7 +51,7 @@ function geocodeAddress(cep, geocoder, resultMap) {
 }
 
 async function getWeather(latitude, longitude) {
-    let data = await myFetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=21fca75a77ef0def83f0929060a037db&units=metric&lang=pt_br`);
+    let data = await myFetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=SUA_CHAVE_API&units=metric&lang=pt_br`);
 
     if (data) {
         document.querySelector('.local').innerHTML = data.name;
