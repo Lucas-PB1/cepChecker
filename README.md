@@ -12,7 +12,7 @@ Este Sistema tem por fim buscar dados sobre o CEP pesquisado, foram usadas as se
 - [Mysql](https://www.mysql.com/).
 - [Viacep](https://viacep.com.br/).
 - [Google Cloud](https://cloud.google.com).
-- [Luge]([openweathermap.org](https://luge.cool)).
+- [Luge](https://luge.cool).
 - [OpenWeather](openweathermap.org).
 - [Bootstrap 5](https://getbootstrap.com).
 - [Imask](https://imask.js.org)
@@ -27,7 +27,7 @@ Primeiro é necessario ter a instalação de uma ambiente docker ou de seus serv
 Realize o clone deste repositorio via [GIT](https://git-scm.com) usando no seu cmd o seguinte comando:
 **git clone [https://github.com/Lucas-PB1/Desafio-Estoque.git](https://github.com/Lucas-PB1/cepChecker.git)**
 
-### Passo 2 - [NPM](https://nodejs.org/en) e (Composer)[https://getcomposer.org/]
+### Passo 2 - [NPM](https://nodejs.org/en) e (Composer)[https://getcomposer.org)
 
 Supondo que você tenha as ferramentas citadas acima instaladas e esteja em um ambiente que interpreta PHP, execute:
 
