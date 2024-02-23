@@ -14,6 +14,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@waaark/luge": "^0.6.18-beta.2",
         "imask": "^7.4.0",
         "toastr": "^2.1.4"
     }

@@ -13,3 +13,7 @@ import toastr from 'toastr';
 import 'toastr/build/toastr.min.css';
 window.toastr = toastr;
 
+// Luge
+import luge from '@waaark/luge'
+import '@waaark/luge/dist/css/luge.css';
+window.luge = luge;
